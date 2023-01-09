@@ -33,13 +33,13 @@ const PopUp = ({ response }) => {
       <PopUpContainer>
         <PopupBody
           ref={PopupRef}
-          status={response.status === 200 ? true : false}
+          status={response?.status === 200 ? true : false}
           style={{ right: showNotification !== false ? "0%" : "-25rem" }}
         >
           <Response>
-            <PopupIcon src={response.status === 200 ? Right : Wrong} />
-            <PopupMessage status={response.status === 200 ? true : false}>
-              {response.message}
+            <PopupIcon src={response?.status === 200 ? Right : Wrong} />
+            <PopupMessage status={response?.status === 200 ? true : false}>
+              {response?.message}
             </PopupMessage>
           </Response>
           <CloseIcon onClick={() => setShowNotification(false)}>+</CloseIcon>

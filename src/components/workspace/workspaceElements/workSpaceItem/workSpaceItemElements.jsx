@@ -30,8 +30,10 @@ export const WorkspaceTitle = styled(WorkspaceContentsTitle)`
   /* border: 1px solid blue; */
 `;
 
-export const WorkspaceOption = styled.div`
-  background: var(--grey);
+export const WorkspaceOption = styled.button`
+  outline: none;
+  border: none;
+  background: ${(props) => (props.disabled ? "#5e6c84" : "var(--grey)")};
   padding: 0.3rem 0.5rem;
   display: flex;
   align-items: center;

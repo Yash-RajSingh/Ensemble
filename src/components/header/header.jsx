@@ -43,7 +43,7 @@ const WorkSpaceList = () => {
               <WorkspaceOption
                 id={item.wuid}
                 onClick={(e) => {
-                  navigate(`/boards/${item.wuid}`);
+                 navigate(`/workspace`);
                 }}
               >
                 <WorkspaceIcon>

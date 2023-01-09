@@ -45,7 +45,7 @@ const List = ({ buid }) => {
     <>
     <PopUp response={showNotification}/>
       <ListContainer>
-        <ListPageHeader data={boardName} />
+        <ListPageHeader data={boardName} buid={buid}/>
         <ListsWrapper>
           {listData && listData?.data?.map((item) => <ListItem data={item} buid={buid}/>)}
           <ListAdder buid={buid}/>
