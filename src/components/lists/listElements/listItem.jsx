@@ -48,14 +48,12 @@ const ListItem = ({ data, buid }) => {
   const {auth, setAuth} = useContext(AuthContext)
   const {showNotification, setShowNotification } = useContext(NotificationPopUpContext);
   const {update, setUpdate} = useContext(UpdateContext)
-  // console.log(data)
   return (
     <>
       <ListItemBody>
         <ListHeader>
           <ListTitle>{data?.list_title}</ListTitle>
           <ListOptions>
-            {/* <ListIcon src={Edit} /> */}
             <ListIcon src={Trash} onClick={ async()=>{
               var response = await DeleteList(
                 auth?.uid || getCookies({name: "uuid"}),

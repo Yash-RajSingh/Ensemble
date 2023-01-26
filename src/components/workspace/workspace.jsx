@@ -16,16 +16,11 @@ import { InputLabel } from "../common/common";
 import InputModal from "../inputModal/inputModal";
 
 const WorkSpaceContainer = styled.div`
-  /* display: flex; */
-  /* flex-wrap: wrap; */
   width: 100%;
-  /* margin: 3% auto; */
   margin-top: 2%;
-  /* border: 1px solid black; */
   `;
 const Title = styled(WorkspaceContentsTitle)``;
 const WorkspaceBody = styled.div`
-/* border: 1px solid red; */
   width: 100%;
   margin-top: 2%;
   padding-left: 2%;

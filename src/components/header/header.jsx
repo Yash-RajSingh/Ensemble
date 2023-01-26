@@ -13,6 +13,8 @@ import {
   WorkspaceOptionContainer,
   LightLabel,
   WorkspaceIcon,
+  ProfileOptions,
+  ProfileOptionButton,
 } from "./headerElements";
 import ProfileIcon from "../../assets/profile.png";
 import DownArrow from "../../assets/down-arrow.png";
@@ -24,8 +26,7 @@ import {
   WorkspaceArrayContext,
 } from "../../context/context";
 import { useNavigate } from "react-router-dom";
-import { getCookies } from "../../hooks/randomStuff/randomStuff";
-// import WorkSpaceAdder from "../workspace/workspaceElements/workspaceAdder";
+import { getCookies, deleteCookie } from "../../hooks/randomStuff/randomStuff";
 
 const WorkSpaceList = () => {
   let navigate = useNavigate();
@@ -43,7 +44,7 @@ const WorkSpaceList = () => {
               <WorkspaceOption
                 id={item.wuid}
                 onClick={(e) => {
-                 navigate(`/workspace`);
+                  navigate(`/workspace`);
                 }}
               >
                 <WorkspaceIcon>
@@ -63,6 +64,7 @@ const WorkSpaceList = () => {
 
 const Header = () => {
   let param = window.location.href;
+  const [showProfile, setShowProfile] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [showWorkspaceBody, setshowWorkspaceBody] = useState(false);
   const { showWorkspaceAdder, setShowWorkspaceAdder } =
@@ -99,8 +101,23 @@ const Header = () => {
                 <CreateBtn onClick={() => setShowWorkspaceAdder(true)}>
                   <LoginText>Create</LoginText>
                 </CreateBtn>
-                {/* <WorkSpaceAdder type={"add"} /> */}
-                <UserProfileIcon src={ProfileIcon} />
+                <UserProfileIcon
+                  src={ProfileIcon}
+                  onClick={() => setShowProfile(!showProfile)}
+                />
+                {showProfile && (
+                  <ProfileOptions>
+                    <ProfileOptionButton>Profile</ProfileOptionButton>
+                    <ProfileOptionButton onClick={()=> {
+                      setAuth(false);
+                      deleteCookie({name: "wuid"})
+                      deleteCookie({name: "bname"})
+                      deleteCookie({name: "uuid"})
+                      deleteCookie({name: "userName"})
+                      navigate('/')
+                    }}>Logout</ProfileOptionButton>
+                  </ProfileOptions>
+                )}
               </UserHeaderWrapper>
             ) : (
               <LoginButton>

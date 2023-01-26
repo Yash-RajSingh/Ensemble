@@ -116,3 +116,21 @@ export const BtnIcon = styled.img`
   transform: scale(${(props) => (props.show ? "-1" : "1")});
   transition: transform 500ms;
 `;
+
+export const ProfileOptions = styled.div`
+  background: var(--grey);
+  position: absolute;
+  top: 3.25rem;
+  width: 7rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+`;
+export const ProfileOptionButton = styled.p`
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+  font-family: "Roboto";
+  &:hover {
+    background: var(--bg-blue);
+    cursor: pointer;
+    color: white;
+  }
+`;
