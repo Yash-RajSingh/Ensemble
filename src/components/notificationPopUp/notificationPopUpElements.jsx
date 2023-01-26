@@ -4,6 +4,7 @@ import { BoardsCloseButton } from "../boards/BoardsPopup/boardsAdderElements";
 export const PopUpContainer = styled.div`
   position: fixed;
   width: 99vw;
+  
 `;
 export const PopupBody = styled.div`
   width: 20rem;

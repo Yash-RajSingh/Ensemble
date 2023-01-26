@@ -8,9 +8,10 @@ import TrashIcon from '../../../assets/trash.png'
 import DeleteBoard from "../../../hooks/boards/deleteBoards";
 import { getCookies } from "../../../hooks/randomStuff/randomStuff";
 import { NotificationPopUpContext, UpdateContext } from "../../../context/context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import { Loader } from "../../common/common";
+import Members from "../../members/members";
 const ListPageHeaderWrapper = styled.div`
   width: 95%;
   display: flex;
@@ -28,51 +29,58 @@ const SubHeaderWrapper = styled.div`
 const ListOption = styled(WorkspaceOption)``
 const ListOptionIcon = styled(WorkspaceOptionIcon)``
 
-const ListPageHeader = ({data, buid}) => {
+const ListPageHeader = ({data}) => {
+  const { buid } = useParams();
   const { update, setUpdate } = useContext(UpdateContext);
   const { showNotification, setShowNotification } = useContext(
     NotificationPopUpContext
   );
   const [isDisabled, setIsDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [show, setShow] = useState(false);
   let navigate = useNavigate()
-  return(
+  return (
     <>
-    <ListPageHeaderWrapper>
-      <BoardPageTitle>{data}</BoardPageTitle>
-      <SubHeaderWrapper>
-      <ListOption>
-        <ListOptionIcon src={MemberIcon} /> Members
-      </ListOption>
-      <ListOption>
-        <ListOptionIcon src={UpdateIcon} /> Update
-      </ListOption>
-      <ListOption disabled={isDisabled} onClick={async()=>{
-        setIsLoading(true)
-        setIsDisabled(true)
-        var response = await DeleteBoard(
-          getCookies({name: "uuid"}),
-          buid
-        );
-        setShowNotification(response);
-        setIsLoading(false)
-        setIsDisabled(false)
-        if(response?.status === 200){
-            navigate('/workspace');
-            setUpdate(!update)
-        }
-        
-      }}>
-        {isLoading ? <Loader /> : 
-        <>
-        <ListOptionIcon src={TrashIcon} /> Delete
-        </>
-        }
-      </ListOption>
-      </SubHeaderWrapper>
-    </ListPageHeaderWrapper>
+      <Members show={show} setShow={setShow}/>
+      <ListPageHeaderWrapper>
+        <BoardPageTitle>{data}</BoardPageTitle>
+        <SubHeaderWrapper>
+          <ListOption onClick={() => setShow(true)}>
+            <ListOptionIcon src={MemberIcon} /> Members
+          </ListOption>
+          <ListOption>
+            <ListOptionIcon src={UpdateIcon} /> Update
+          </ListOption>
+          <ListOption
+            disabled={isDisabled}
+            onClick={async () => {
+              setIsLoading(true);
+              setIsDisabled(true);
+              var response = await DeleteBoard(
+                getCookies({ name: "uuid" }),
+                buid
+              );
+              setShowNotification(response);
+              setIsLoading(false);
+              setIsDisabled(false);
+              if (response?.status === 200) {
+                navigate("/workspace");
+                setUpdate(!update);
+              }
+            }}
+          >
+            {isLoading ? (
+              <Loader />
+            ) : (
+              <>
+                <ListOptionIcon src={TrashIcon} /> Delete
+              </>
+            )}
+          </ListOption>
+        </SubHeaderWrapper>
+      </ListPageHeaderWrapper>
     </>
-  )
+  );
 }
 
 export default ListPageHeader;

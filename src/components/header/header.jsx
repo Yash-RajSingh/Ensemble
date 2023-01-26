@@ -110,11 +110,12 @@ const Header = () => {
                     <ProfileOptionButton>Profile</ProfileOptionButton>
                     <ProfileOptionButton onClick={()=> {
                       setAuth(false);
-                      deleteCookie({name: "wuid"})
-                      deleteCookie({name: "bname"})
-                      deleteCookie({name: "uuid"})
-                      deleteCookie({name: "userName"})
+                      deleteCookie({name: "wuid"});
+                      deleteCookie({name: "bname"});
+                      deleteCookie({name: "uuid"});
+                      deleteCookie({name: "userName"});
                       navigate('/')
+                      window.location.reload()
                     }}>Logout</ProfileOptionButton>
                   </ProfileOptions>
                 )}
