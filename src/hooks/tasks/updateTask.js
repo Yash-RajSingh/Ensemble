@@ -1,13 +1,25 @@
-const UpdateWorkspace = async (title, uid, wuid) => {
+const UpdateTask = async (
+  title,
+  user_id,
+  board_id,
+  due_date_time,
+  list_id,
+  task_id,
+  status
+) => {
   const Data = {
     title,
-    uid,
-    wuid,
+    user_id,
+    board_id,
+    due_date_time,
+    list_id,
+    task_id,
+    status,
   };
-  const BaseUrl = import.meta.env.VITE_APP_UPDATE_WORKSPACE_URL;
+  const BaseUrl = import.meta.env.VITE_APP_UPDATE_TASK_URL;
   try {
     const request = await fetch(BaseUrl, {
-      method: "PATCH",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -20,4 +32,4 @@ const UpdateWorkspace = async (title, uid, wuid) => {
   }
 };
 
-export default UpdateWorkspace;
+export default UpdateTask;

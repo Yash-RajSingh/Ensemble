@@ -18,7 +18,7 @@ import InputModal from "../inputModal/inputModal";
 const WorkSpaceContainer = styled.div`
   width: 100%;
   margin-top: 2%;
-  `;
+`;
 const Title = styled(WorkspaceContentsTitle)``;
 const WorkspaceBody = styled.div`
   width: 100%;
@@ -64,7 +64,6 @@ const WorkSpace = () => {
                 </>
               ) : (
                 <InputLabel top={"2%"}>
-                  
                   You aren't a member of any workspaces yet.
                 </InputLabel>
               )}

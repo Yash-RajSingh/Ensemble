@@ -3,7 +3,7 @@ const DeleteTask = async (user_id, board_id, list_id, task_id) => {
     user_id,
     board_id,
     list_id,
-    task_id
+    task_id,
   };
   const BaseUrl = import.meta.env.VITE_APP_DELETE_TASK_URL;
   try {

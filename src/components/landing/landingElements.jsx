@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const PageBody = styled.div``
+export const PageBody = styled.div``;
 export const LandingContainer = styled.div`
   /* border: 1px solid pink; */
   width: 95%;
@@ -51,7 +51,7 @@ export const InfoTitle = styled.p`
 
 export const Footer = styled.div`
   background: linear-gradient(240deg, rgb(0, 184, 217), rgb(0, 101, 255)) 0% 0%;
-  padding:1rem;
+  padding: 1rem;
   text-align: center;
   margin-top: 7%;
 `;
@@ -60,7 +60,7 @@ export const FooterText = styled(LandingText)`
   color: white;
   line-height: 1.3333;
   margin: 2% auto 0;
-`
+`;
 export const Copyright = styled.div`
   background: linear-gradient(240deg, rgb(0, 184, 217), rgb(0, 101, 255)) 0% 0%;
   color: white;

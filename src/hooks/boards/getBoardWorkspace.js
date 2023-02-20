@@ -1,6 +1,6 @@
 const GetBoardWorkspace = async (uid, buid) => {
   const data = {
-    uid
+    uid,
   };
   const BaseUrl = import.meta.env.VITE_APP_GET_ALL_BOARD;
   try {
@@ -12,7 +12,7 @@ const GetBoardWorkspace = async (uid, buid) => {
       body: JSON.stringify(data),
     });
     const response = await request.json();
-    console.log(response)
+    console.log(response);
     return response;
   } catch (err) {
     console.log(err);

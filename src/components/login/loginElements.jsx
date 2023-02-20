@@ -9,14 +9,14 @@ export const LoginContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  `;
+`;
 
 export const LoginFormWrapper = styled.div`
   width: 26rem;
   display: flex;
   gap: 5%;
   overflow: hidden;
-  align-items: center; 
+  align-items: center;
 `;
 export const LoginForm = styled.form`
   background: var(--white);
@@ -67,7 +67,7 @@ export const LoginButton = styled.button`
 `;
 
 export const LoginHeading = styled.p`
-  font-family: 'Rubik';
+  font-family: "Rubik";
   font-weight: bold;
   font-size: 2.5rem;
   width: max-content;
@@ -84,13 +84,13 @@ export const LoginText = styled.p`
 export const Decorated = styled.span`
   color: var(--bg-blue);
   text-decoration: underline;
-    cursor: pointer;
-`
+  cursor: pointer;
+`;
 
 export const WarningText = styled.span`
-display: inline-block;
-font-family: 'Roboto';
-letter-spacing: 0.5px;
+  display: inline-block;
+  font-family: "Roboto";
+  letter-spacing: 0.5px;
   color: red;
   font-size: 0.7rem;
-`
+`;

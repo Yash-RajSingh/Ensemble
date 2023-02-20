@@ -1,7 +1,7 @@
 const GetListsAndTasks = async (user_id, board_id) => {
   const data = {
     user_id,
-    board_id
+    board_id,
   };
   const BaseUrl = import.meta.env.VITE_APP_GET_LISTS_AND_TASK_URL;
   try {
@@ -15,7 +15,7 @@ const GetListsAndTasks = async (user_id, board_id) => {
     const response = await request.json();
     return response;
   } catch (err) {
-      console.log(err);;
+    console.log(err);
   }
 };
 

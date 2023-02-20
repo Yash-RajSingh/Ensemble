@@ -15,7 +15,7 @@ const GetWorkspaces = async (uid, token) => {
     const response = await request.json();
     return response;
   } catch (err) {
-      console.log(err);;
+    console.log(err);
   }
 };
 

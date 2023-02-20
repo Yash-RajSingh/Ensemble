@@ -31,55 +31,75 @@ const SubInputWrapper = styled.div`
 `;
 const CloseBtn = styled(CloseIcon)`
   font-size: 1rem;
-`
-const TaskAdderButton = styled(ListAdderButton)``
-const TaskAdder = ({buid, luid}) => {
+`;
+const TaskAdderButton = styled(ListAdderButton)``;
+const TaskAdder = ({ buid, luid }) => {
   const [showInput, setShowInput] = useState(false);
-  const [isDisabled, setIsDisabled] = useState(true)
-  const [isLoading, setIsloading] = useState(false)
-  const {update, setUpdate} = useContext(UpdateContext);
-  const {showNotification, setShowNotification } = useContext(NotificationPopUpContext)
-  const TaskInputRef=useRef()
-  const DateInputRef=useRef()
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [isLoading, setIsloading] = useState(false);
+  const { update, setUpdate } = useContext(UpdateContext);
+  const { showNotification, setShowNotification } = useContext(
+    NotificationPopUpContext
+  );
+  const TaskInputRef = useRef();
+  const DateInputRef = useRef();
   return (
     <>
       <TaskAdderBody>
         {showInput ? (
-        <TaskInputWrapper>
-          <CloseBtn onClick={()=> setShowInput(false)}>+</CloseBtn>
-          <TaskInput
-            ref={TaskInputRef}
-            onChange={() => {
-              TaskInputRef.current.value.trim().length === 0
-                ? setIsDisabled(true)
-                : setIsDisabled(false);
-            }}
-          />
-          <SubInputWrapper>
-            <TaskInput type={"date"} size={"min-content"} ref={DateInputRef} onChange={()=> console.log(DateInputRef.current.value, TaskInputRef.current.value,buid,luid)}/>
-            <TaskAdderButton size={"max-content"} top={"5%"}  disabled={isDisabled} onClick={ async()=> {
-              console.log("clicked")
-              setIsDisabled(true);
-              setIsloading(true);
-              var response = await AddTask(
-                TaskInputRef.current.value,
-                getCookies({name: "uuid"}),
-                buid,
-                DateInputRef.current.value,
-                luid
-              );
-              console.log(response)
-              setIsloading(false);
-              TaskInputRef.current.value = DateInputRef.current.value = null;
-              setIsDisabled(false)
-                setShowNotification(response);
-                setUpdate(!update);
-                setShowInput(false)
-            }}>
-              {isLoading ? <Loader /> : "Add"}
-            </TaskAdderButton>
-          </SubInputWrapper>
-        </TaskInputWrapper>
+          <TaskInputWrapper>
+            <CloseBtn onClick={() => setShowInput(false)}>+</CloseBtn>
+            <TaskInput
+              ref={TaskInputRef}
+              onChange={() => {
+                TaskInputRef.current.value.trim().length === 0
+                  ? setIsDisabled(true)
+                  : setIsDisabled(false);
+              }}
+            />
+            <SubInputWrapper>
+              <TaskInput
+                type={"date"}
+                size={"min-content"}
+                ref={DateInputRef}
+                onChange={() =>
+                  console.log(
+                    DateInputRef.current.value,
+                    TaskInputRef.current.value,
+                    buid,
+                    luid
+                  )
+                }
+              />
+              <TaskAdderButton
+                size={"max-content"}
+                top={"5%"}
+                disabled={isDisabled}
+                onClick={async () => {
+                  console.log("clicked");
+                  setIsDisabled(true);
+                  setIsloading(true);
+                  console.log(DateInputRef.current.value);
+                  var response = await AddTask(
+                    TaskInputRef.current.value,
+                    getCookies({ name: "uuid" }),
+                    buid,
+                    DateInputRef.current.value,
+                    luid
+                  );
+                  setIsloading(false);
+                  TaskInputRef.current.value = DateInputRef.current.value =
+                    null;
+                  setIsDisabled(false);
+                  setShowNotification(response);
+                  setUpdate(!update);
+                  setShowInput(false);
+                }}
+              >
+                {isLoading ? <Loader /> : "Add"}
+              </TaskAdderButton>
+            </SubInputWrapper>
+          </TaskInputWrapper>
         ) : (
           <TaskAdderTitle onClick={() => setShowInput(true)}>
             + Add task

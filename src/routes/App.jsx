@@ -17,6 +17,7 @@ import {
 import Header from "../components/header/header";
 import styled from "styled-components";
 import Sidebar from "../components/sidebar/sidebar";
+import ProfilePage from "./profilePage/profilePage";
 
 const PseudoBody = styled.div`
   display: flex;
@@ -61,6 +62,10 @@ const App = () => {
                             element={<WorkSpacePage />}
                           />
                           <Route path="/list/:buid" element={<ListsPage />} />
+                          <Route
+                            path="/userprofile"
+                            element={<ProfilePage />}
+                          />
                         </Routes>
                       </PseudoBody>
                     </Router>

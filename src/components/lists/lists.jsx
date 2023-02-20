@@ -1,10 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { AuthContext, NotificationPopUpContext, UpdateContext } from "../../context/context";
+import {
+  AuthContext,
+  NotificationPopUpContext,
+  UpdateContext,
+} from "../../context/context";
 import GetListsAndTasks from "../../hooks/lists/getLists";
 import { getCookies } from "../../hooks/randomStuff/randomStuff";
 import PopUp from "../notificationPopUp/notificationPopUp";
-import {ListAdder} from "./listElements/listAdder";
+import { ListAdder } from "./listElements/listAdder";
 import ListItem from "./listElements/listItem";
 import ListPageHeader from "./listElements/ListPageHeader";
 
@@ -29,7 +33,9 @@ const ListsWrapper = styled.div`
 const List = ({ buid }) => {
   const { auth, setAuth } = useContext(AuthContext);
   const { update, setUpdate } = useContext(UpdateContext);
-  const {showNotification, setShowNotification } = useContext(NotificationPopUpContext)
+  const { showNotification, setShowNotification } = useContext(
+    NotificationPopUpContext
+  );
   const [listData, setListData] = useState(false);
   var boardName = getCookies({ name: "bname" });
   useEffect(() => {
@@ -43,12 +49,13 @@ const List = ({ buid }) => {
   }, [update]);
   return (
     <>
-    <PopUp response={showNotification}/>
+      <PopUp response={showNotification} />
       <ListContainer>
-        <ListPageHeader data={boardName} buid={buid}/>
+        <ListPageHeader data={boardName} buid={buid} />
         <ListsWrapper>
-          {listData && listData?.data?.map((item) => <ListItem data={item} buid={buid}/>)}
-          <ListAdder buid={buid}/>
+          {listData &&
+            listData?.data?.map((item) => <ListItem data={item} buid={buid} />)}
+          <ListAdder buid={buid} />
         </ListsWrapper>
       </ListContainer>
     </>

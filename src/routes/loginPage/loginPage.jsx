@@ -4,7 +4,7 @@ import Preloader from "../../components/preloader/preloader";
 const LoginPage = () => {
   return (
     <>
-    <Preloader />
+      <Preloader />
       <Login />
     </>
   );

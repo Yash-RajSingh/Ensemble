@@ -1,13 +1,18 @@
-
 import styled from "styled-components";
 import { WorkspaceContentsTitle } from "../../workspace/workspaceElements/workspaceAdder/workspaceAdderElements";
-import { WorkspaceOption, WorkspaceOptionIcon } from "../../workspace/workspaceElements/workSpaceItem/workSpaceItemElements";
-import MemberIcon from '../../../assets/member.png';
-import UpdateIcon from '../../../assets/update.png'
-import TrashIcon from '../../../assets/trash.png'
+import {
+  WorkspaceOption,
+  WorkspaceOptionIcon,
+} from "../../workspace/workspaceElements/workSpaceItem/workSpaceItemElements";
+import MemberIcon from "../../../assets/member.png";
+import UpdateIcon from "../../../assets/update.png";
+import TrashIcon from "../../../assets/trash.png";
 import DeleteBoard from "../../../hooks/boards/deleteBoards";
 import { getCookies } from "../../../hooks/randomStuff/randomStuff";
-import { NotificationPopUpContext, UpdateContext } from "../../../context/context";
+import {
+  NotificationPopUpContext,
+  UpdateContext,
+} from "../../../context/context";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext, useState } from "react";
 import { Loader } from "../../common/common";
@@ -18,18 +23,18 @@ const ListPageHeaderWrapper = styled.div`
   justify-content: space-between;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
-const BoardPageTitle = styled(WorkspaceContentsTitle)``
+const BoardPageTitle = styled(WorkspaceContentsTitle)``;
 const SubHeaderWrapper = styled.div`
   width: 25%;
   /* border: 1px solid black; */
   display: flex;
   align-items: center;
   gap: 5%;
-`
-const ListOption = styled(WorkspaceOption)``
-const ListOptionIcon = styled(WorkspaceOptionIcon)``
+`;
+const ListOption = styled(WorkspaceOption)``;
+const ListOptionIcon = styled(WorkspaceOptionIcon)``;
 
-const ListPageHeader = ({data}) => {
+const ListPageHeader = ({ data }) => {
   const { buid } = useParams();
   const { update, setUpdate } = useContext(UpdateContext);
   const { showNotification, setShowNotification } = useContext(
@@ -38,10 +43,10 @@ const ListPageHeader = ({data}) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [show, setShow] = useState(false);
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   return (
     <>
-      <Members show={show} setShow={setShow}/>
+      <Members show={show} setShow={setShow} />
       <ListPageHeaderWrapper>
         <BoardPageTitle>{data}</BoardPageTitle>
         <SubHeaderWrapper>
@@ -81,6 +86,6 @@ const ListPageHeader = ({data}) => {
       </ListPageHeaderWrapper>
     </>
   );
-}
+};
 
 export default ListPageHeader;

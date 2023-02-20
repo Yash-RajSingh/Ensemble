@@ -18,7 +18,6 @@ import GetMember from "../../hooks/members/getMember";
 import { getCookies } from "../../hooks/randomStuff/randomStuff";
 import { useParams } from "react-router-dom";
 import AddMember from "../../hooks/members/addMember";
-import PopUp from "../notificationPopUp/notificationPopUp";
 import DeleteMember from "../../hooks/members/deleteMember";
 const Members = (props) => {
   const { buid } = useParams();
@@ -37,12 +36,8 @@ const Members = (props) => {
         auth ? auth.uid : getCookies({ name: "uuid" }),
         buid
       );
-      console.log(response);
       if (response?.status === 200) {
         setMemberList(response.data);
-        memberList[0]?.user_id === uuid
-          ? setIsCreator(true)
-          : setIsCreator(false);
       }
     })();
   }, [update]);
@@ -86,7 +81,6 @@ const Members = (props) => {
                     getCookies({ name: "wuid" }),
                     buid
                   );
-                  console.log(response);
                   setShowNotification(response);
                   setIsLoading(false);
                   setUpdate(!update);
@@ -102,7 +96,7 @@ const Members = (props) => {
               memberList.map((item, index) => {
                 return (
                   <>
-                    <MemberItem>
+                    <MemberItem key={item.user_id}>
                       <MemberItemSubWrapper>
                         <InputLabel bold>
                           {`${item?.username
@@ -118,23 +112,25 @@ const Members = (props) => {
                       <MemberItemSubWrapper>
                         <InputLabel>{item?.user_role}</InputLabel>
                         {memberList && memberList[0]?.user_id === uuid && (
-                          <InputLabel
-                            size="0.65rem"
-                            top="3%"
-                            style={{ float: "right", cursor: "pointer" }}
-                            onClick={async (e) => {
-                              var response = await DeleteMember(
-                                item.email,
-                                auth.uid || getCookies({ name: "uuid" }),
-                                getCookies({ name: "wuid" }),
-                                buid
-                              );
-                              setShowNotification(response);
-                              setUpdate(!update);
-                            }}
-                          >
-                            Remove
-                          </InputLabel>
+                          <>
+                            <InputLabel
+                              size="0.65rem"
+                              top="3%"
+                              style={{ float: "right", cursor: "pointer" }}
+                              onClick={async (e) => {
+                                var response = await DeleteMember(
+                                  item.email,
+                                  auth.uid || getCookies({ name: "uuid" }),
+                                  getCookies({ name: "wuid" }),
+                                  buid
+                                );
+                                setShowNotification(response);
+                                setUpdate(!update);
+                              }}
+                            >
+                              Remove
+                            </InputLabel>
+                          </>
                         )}
                       </MemberItemSubWrapper>
                     </MemberItem>

@@ -15,7 +15,7 @@ const AddWorkspace = async (title, creator_id) => {
     const response = await request.json();
     return response;
   } catch (err) {
-      console.log(err);;
+    console.log(err);
   }
 };
 

@@ -13,7 +13,7 @@ import HomeIcon from "../../assets/waveIcon.png";
 import { useContext, useEffect, useState } from "react";
 import { WorkspaceArrayContext } from "../../context/context";
 import { BtnIcon } from "../header/headerElements";
-import Down from '../../assets/down-arrow.png'
+import Down from "../../assets/down-arrow.png";
 const Sidebar = () => {
   const [showSidebar, setShowSidebar] = useState(false);
   const { workspaceArray, setWorkspaceArray } = useContext(

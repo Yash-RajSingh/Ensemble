@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { InputLabel } from "../common/common";
+// import { InputLabel } from "../common/common";
 
 export const MembersContainer = styled.div`
   display: ${(props) => (props.show ? "flex" : "none")};
@@ -18,7 +18,7 @@ export const MembersWrapper = styled.div`
   width: 35rem;
   height: max-content;
   padding: 1.5rem;
-`
+`;
 
 export const MemberAdderWrapper = styled.div`
   display: flex;
@@ -26,16 +26,18 @@ export const MemberAdderWrapper = styled.div`
   margin-top: 1%;
   padding: 0.5rem 0;
   justify-content: space-between;
-`
+`;
 
-export const MemberListWrapper = styled.div``
+export const MemberListWrapper = styled.div`
+  /* border: 1px solid green; */
+`;
 
 export const MemberItem = styled.div`
   width: 97%;
   display: flex;
   justify-content: space-between;
   margin: 3% 0 0 1%;
-`
+`;
 export const MemberItemSubWrapper = styled.div`
   /* border: 1px solid green; */
-`
+`;

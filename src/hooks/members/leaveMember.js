@@ -1,12 +1,13 @@
-const GetWorkspacesAndBoards = async (user_id, token) => {
+const DeleteMember = async (uid, wuid, buid) => {
   const data = {
-    user_id,
-    token,
+    uid,
+    wuid,
+    buid,
   };
-  const BaseUrl = import.meta.env.VITE_APP_GET_WORKSPACE_AND_BOARDS_URL;
+  const BaseUrl = import.meta.env.VITE_APP_LEAVE_MEMBER_URL;
   try {
     const request = await fetch(BaseUrl, {
-      method: "POST",
+      method: "DELETE",
       headers: {
         "Content-Type": "application/json",
       },
@@ -19,4 +20,4 @@ const GetWorkspacesAndBoards = async (user_id, token) => {
   }
 };
 
-export default GetWorkspacesAndBoards;
+export default DeleteMember;

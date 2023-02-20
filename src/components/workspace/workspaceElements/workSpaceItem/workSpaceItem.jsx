@@ -40,9 +40,9 @@ const WorkSpaceItem = ({ data }) => {
   const { showInputModal, setShowInputModal } = useContext(
     ShowInputModalContext
   );
-  useEffect(()=>{
-    setLimit(4)
-  },[update])
+  useEffect(() => {
+    setLimit(4);
+  }, [update]);
   return (
     <>
       <WorkspaceItemBody>
@@ -122,7 +122,18 @@ const WorkSpaceItem = ({ data }) => {
             <BoardBox data={item} wuid={data.workspace_uid} />
           ))}
         </WorkspaceItemMainBody>
-        {(data?.boards_data?.length>4) && <WorkspaceOption style={{width: "max-content", fontWeight: 900, padding: "0.5rem 1rem"}} onClick={()=> setLimit(data?.boards_data?.length)}>See More</WorkspaceOption>}
+        {data?.boards_data?.length > 4 && (
+          <WorkspaceOption
+            style={{
+              width: "max-content",
+              fontWeight: 900,
+              padding: "0.5rem 1rem",
+            }}
+            onClick={() => setLimit(data?.boards_data?.length)}
+          >
+            See More
+          </WorkspaceOption>
+        )}
       </WorkspaceItemBody>
     </>
   );

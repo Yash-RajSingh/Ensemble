@@ -54,12 +54,12 @@ const Login = () => {
       SignupConfirmPasswordRef.current.value.trim().length === 0
     ) {
       setIsDisabled(true);
+    } else {
+      setIsDisabled(false);
     }
-    else{
-      setIsDisabled(false)
-    }
-    (SignupPasswordRef.current.value === SignupConfirmPasswordRef.current.value) ? setIsMatching(true) :  setIsMatching(false) ;
-
+    SignupPasswordRef.current.value === SignupConfirmPasswordRef.current.value
+      ? setIsMatching(true)
+      : setIsMatching(false);
   };
 
   return (
@@ -78,7 +78,7 @@ const Login = () => {
               onChange={handleLoginChange}
             />
             <FormInput
-              placeholder="Passwword"
+              placeholder="Password"
               ref={LoginPassRef}
               onChange={handleLoginChange}
               type="password"
@@ -117,7 +117,7 @@ const Login = () => {
               {isLoading ? <Loader /> : "Login"}
             </LoginButton>
             <LoginText>
-              Don't have an account? {" "}
+              Don't have an account?{" "}
               <Decorated onClick={() => setShow(false)}>Create one</Decorated>
             </LoginText>
           </LoginForm>
@@ -138,64 +138,67 @@ const Login = () => {
               onChange={handleSignupChange}
             />
             <FormInput
-              placeholder="Passwword"
+              placeholder="Password"
               type="password"
               ref={SignupPasswordRef}
               onChange={handleSignupChange}
             />
             <FormInput
-              placeholder="Confirm Passwword"
+              placeholder="Confirm Password"
               type="password"
               ref={SignupConfirmPasswordRef}
               onChange={handleSignupChange}
             />
-            {!isMatching && <WarningText>Passwords do not match. Try again!</WarningText> }
-            <LoginButton disabled={isDisabled} 
-            onClick={async (e) => {
-            e.preventDefault();
-            setIsLoading(true);
-            setIsDisabled(true)
-            var response = await HandleSignUp(
-              SignupNameRef.current.value,
-              SignupEmailRef.current.value,
-              SignupPasswordRef.current.value
-            );
-            setIsLoading(false);
-            setIsDisabled(false);
-            setShowNotification(response);
-            if (response.status === 200) {
-              createCookie({
-                name: "email",
-                value: SignupEmailRef.current.value,
-                validDays: 7,
-              });
-              createCookie({
-                name: "pass",
-                value: SignupPasswordRef.current.value,
-                validDays: 7,
-              });
-              const LoginStatus = await HandleLogin(
-                getCookies({ name: "email" }),
-                getCookies({ name: "pass" })
-              );
-              if (LoginStatus.status === 200) {
-                deleteCookie({ name: "email" });
-                deleteCookie({ name: "pass" });
-                createCookie({
-                  name: "userName",
-                  value: LoginStatus.username,
-                  validDays: 7,
-                });
-                createCookie({
-                  name: "uuid",
-                  value: LoginStatus.uid,
-                  validDays: 7,
-                });
-                setAuth(LoginStatus);
-                navigate("/workspace");
-              }
-            }
-          }}
+            {!isMatching && (
+              <WarningText>Passwords do not match. Try again!</WarningText>
+            )}
+            <LoginButton
+              disabled={isDisabled}
+              onClick={async (e) => {
+                e.preventDefault();
+                setIsLoading(true);
+                setIsDisabled(true);
+                var response = await HandleSignUp(
+                  SignupNameRef.current.value,
+                  SignupEmailRef.current.value,
+                  SignupPasswordRef.current.value
+                );
+                setIsLoading(false);
+                setIsDisabled(false);
+                setShowNotification(response);
+                if (response.status === 200) {
+                  createCookie({
+                    name: "email",
+                    value: SignupEmailRef.current.value,
+                    validDays: 7,
+                  });
+                  createCookie({
+                    name: "pass",
+                    value: SignupPasswordRef.current.value,
+                    validDays: 7,
+                  });
+                  const LoginStatus = await HandleLogin(
+                    getCookies({ name: "email" }),
+                    getCookies({ name: "pass" })
+                  );
+                  if (LoginStatus.status === 200) {
+                    deleteCookie({ name: "email" });
+                    deleteCookie({ name: "pass" });
+                    createCookie({
+                      name: "userName",
+                      value: LoginStatus.username,
+                      validDays: 7,
+                    });
+                    createCookie({
+                      name: "uuid",
+                      value: LoginStatus.uid,
+                      validDays: 7,
+                    });
+                    setAuth(LoginStatus);
+                    navigate("/workspace");
+                  }
+                }
+              }}
             >
               {isLoading ? <Loader /> : "Signup"}
             </LoginButton>

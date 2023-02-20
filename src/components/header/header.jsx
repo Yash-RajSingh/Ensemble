@@ -89,15 +89,19 @@ const Header = () => {
             <HeaderTitle>Ensemble</HeaderTitle>
             {auth || userData ? (
               <UserHeaderWrapper>
-                <WorkspaceButton
+                {/* <WorkspaceButton
                   onClick={() => setshowWorkspaceBody(!showWorkspaceBody)}
                 >
                   Workspaces
                   <BtnIcon src={DownArrow2} show={showWorkspaceBody} />
+                </WorkspaceButton> */}
+                <WorkspaceButton onClick={() => navigate("/workspace")}>
+                  Workspaces
                 </WorkspaceButton>
                 <WorkspaceOptionContainer show={showWorkspaceBody}>
                   <WorkSpaceList />
                 </WorkspaceOptionContainer>
+
                 <CreateBtn onClick={() => setShowWorkspaceAdder(true)}>
                   <LoginText>Create</LoginText>
                 </CreateBtn>
@@ -107,16 +111,24 @@ const Header = () => {
                 />
                 {showProfile && (
                   <ProfileOptions>
-                    <ProfileOptionButton>Profile</ProfileOptionButton>
-                    <ProfileOptionButton onClick={()=> {
-                      setAuth(false);
-                      deleteCookie({name: "wuid"});
-                      deleteCookie({name: "bname"});
-                      deleteCookie({name: "uuid"});
-                      deleteCookie({name: "userName"});
-                      navigate('/')
-                      window.location.reload()
-                    }}>Logout</ProfileOptionButton>
+                    <ProfileOptionButton
+                      onClick={() => navigate("/userprofile")}
+                    >
+                      Profile
+                    </ProfileOptionButton>
+                    <ProfileOptionButton
+                      onClick={() => {
+                        setAuth(false);
+                        deleteCookie({ name: "wuid" });
+                        deleteCookie({ name: "bname" });
+                        deleteCookie({ name: "uuid" });
+                        deleteCookie({ name: "userName" });
+                        navigate("/");
+                        window.location.reload();
+                      }}
+                    >
+                      Logout
+                    </ProfileOptionButton>
                   </ProfileOptions>
                 )}
               </UserHeaderWrapper>

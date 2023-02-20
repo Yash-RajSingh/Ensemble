@@ -28,6 +28,21 @@ const GlobalStyles = createGlobalStyle`
     background: var(--bg-white);
     padding: 0;
   }
+  select{
+    outline: none;
+    border: none;
+    background: var(--white);
+    color: var(--text-blue);
+    font-size: 0.7rem;
+  }
+  option{
+    background: var(--white);
+    color: var(--text-blue);
+    outline: none;
+    border: none;
+    margin-top: 20px;
+     border: 1px solid green!important;
+  }
 `;
 
 export default GlobalStyles;

@@ -34,13 +34,12 @@ export const SidebarIcon = styled.img`
   width: 1.5rem;
 `;
 
-
 export const SubSideBarOption = styled.div`
   /* border: 1px solid black; */
   display: flex;
   align-items: center;
   margin-top: 2%;
-`
+`;
 
 export const SubSidebarIcon = styled.div`
   font-family: "Roboto";
@@ -54,10 +53,10 @@ export const SubSidebarIcon = styled.div`
 `;
 export const Name = styled(InputLabel)`
   margin-left: 2%;
-`
+`;
 
 export const SmallerDown = styled(BtnIcon)`
   width: 0.5rem;
   margin-left: auto;
   margin-right: 2%;
-`
+`;

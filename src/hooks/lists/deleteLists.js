@@ -1,8 +1,8 @@
-const DeleteList = async (user_id, board_id,list_id) => {
+const DeleteList = async (user_id, board_id, list_id) => {
   const Data = {
     user_id,
     board_id,
-    list_id
+    list_id,
   };
   const BaseUrl = import.meta.env.VITE_APP_DELETE_LISTS_URL;
   try {
@@ -16,7 +16,7 @@ const DeleteList = async (user_id, board_id,list_id) => {
     const response = await request.json();
     return response;
   } catch (err) {
-      console.log(err);;
+    console.log(err);
   }
 };
 

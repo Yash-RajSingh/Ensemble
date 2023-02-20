@@ -4,7 +4,7 @@ import WorkSpace from "../../components/workspace/workspace";
 const WorkSpacePage = () => {
   return (
     <>
-    <Preloader />
+      <Preloader />
       <WorkSpace />
     </>
   );
