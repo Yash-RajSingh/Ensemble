@@ -68,7 +68,7 @@ const ListItem = ({ data, buid }) => {
             />
           </ListOptions>
         </ListHeader>
-        {console.log(data?.tasks_data)}
+        {/* {console.log(data?.tasks_data)} */}
         <TaskWrapper>
           {data?.tasks_data?.map((item) => (
             <Task data={item} buid={buid} luid={data?.list_id} />

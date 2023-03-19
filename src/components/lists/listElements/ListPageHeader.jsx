@@ -14,9 +14,10 @@ import {
   UpdateContext,
 } from "../../../context/context";
 import { useNavigate, useParams } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Loader } from "../../common/common";
 import Members from "../../members/members";
+import UpdateBoard from "../../../hooks/boards/updateBoards";
 const ListPageHeaderWrapper = styled.div`
   width: 95%;
   display: flex;
@@ -34,6 +35,44 @@ const SubHeaderWrapper = styled.div`
 const ListOption = styled(WorkspaceOption)``;
 const ListOptionIcon = styled(WorkspaceOptionIcon)``;
 
+
+
+
+const EditableText = (props) =>{
+  const data = props.props
+  // console.log(props.buid)
+  const [text, setText] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  // setText(props)
+  useEffect(()=>{
+
+    setText(data)
+  },[])
+  return (
+    <>
+      {isEditing ? (
+        <input
+          onChange={(e) =>{
+            ( e.target.value !=='') ? setText(e.target.value) : setText(data)
+            }
+          } 
+          onBlur={() => setIsEditing(false)}
+          autoFocus
+        />
+      ) : (
+        <div onDoubleClick={() => {
+          setIsEditing(true);
+          // var response = await UpdateBoard(buid)
+        } 
+      }
+      >{text}</div>
+      )}
+    </>
+  );
+}
+
+
+
 const ListPageHeader = ({ data }) => {
   const { buid } = useParams();
   const { update, setUpdate } = useContext(UpdateContext);
@@ -48,7 +87,8 @@ const ListPageHeader = ({ data }) => {
     <>
       <Members show={show} setShow={setShow} />
       <ListPageHeaderWrapper>
-        <BoardPageTitle>{data}</BoardPageTitle>
+        {/* <BoardPageTitle>{data}</BoardPageTitle> */}
+        <EditableText props={data} buid={buid}/>
         <SubHeaderWrapper>
           <ListOption onClick={() => setShow(true)}>
             <ListOptionIcon src={MemberIcon} /> Members
