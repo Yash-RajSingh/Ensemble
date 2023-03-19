@@ -8,7 +8,7 @@ or
 
 
 # Directory Structure
-
+```
 ├───assets
 ├───components
 │   ├───boards
@@ -47,3 +47,4 @@ or
     ├───loginPage
     ├───profilePage
     └───workspacePage
+```
