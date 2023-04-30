@@ -5,20 +5,33 @@ export const LandingContainer = styled.div`
   width: 95%;
   margin: 2% auto;
   padding: 1rem;
+  @media (max-width: 720px) {
+    width: 90%;
+  }
 `;
 
 export const IntroContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  @media (max-width: 720px) {
+    flex-direction: column;
+  }
 `;
 export const IntroSubWrapper = styled.div`
   width: ${(props) => (props.width ? props.width : "50%")};
-  /* border: 1px solid green; */
-  /* padding: 1rem; */
+  @media (max-width: 720px) {
+    width: 100%;
+    
+  }
 `;
 export const IntroImage = styled.img`
   width: 95%;
   margin: auto;
+  @media (max-width: 720px) {
+    /* border: 1px solid green; */
+    margin-top: 10%;
+    width: 100%
+  }
 `;
 
 export const LandingText = styled.p`
@@ -28,6 +41,24 @@ export const LandingText = styled.p`
   color: ${(props) => (props.color ? "var(--bg-blue)" : "var(--text-blue)")};
   font-weight: ${(props) => (props.weight ? props.weight : "400")};
   width: ${(props) => props.width};
+  @media (max-width: 720px) {
+    &.motto {
+      font-size: 2.35rem;
+      /* margin-top: 40%; */
+    }
+    &.submotto {
+      font-size: 1.25rem;
+      margin-top: 15%;
+    }
+    &.definition {
+      width: 90%;
+      /* border: 2px solid yellow; */
+    }
+    &.powerhouse{
+      margin-top: 2%;
+      font-size: 2rem;
+    }
+  }
 `;
 export const InfoCard = styled.div`
   margin-bottom: 5%;
@@ -41,6 +72,10 @@ export const InfoCard = styled.div`
   /* border-bottom: rgb(9, 30, 30, 0.1) solid 0.25px;
   border-right: rgb(9, 30, 30, 0.1) solid 0.25px; */
   color: var(--text-blue);
+  @media (max-width: 720px) {
+    width: 100%;
+    padding: 0.5rem 0.5rem 1rem;
+  }
 `;
 export const InfoTitle = styled.p`
   font-size: 1.35rem;

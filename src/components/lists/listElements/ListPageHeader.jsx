@@ -8,7 +8,11 @@ import MemberIcon from "../../../assets/member.png";
 import UpdateIcon from "../../../assets/update.png";
 import TrashIcon from "../../../assets/trash.png";
 import DeleteBoard from "../../../hooks/boards/deleteBoards";
-import { getCookies } from "../../../hooks/randomStuff/randomStuff";
+import {
+  getCookies,
+  deleteCookie,
+  createCookie,
+} from "../../../hooks/randomStuff/randomStuff";
 import {
   NotificationPopUpContext,
   UpdateContext,
@@ -19,61 +23,87 @@ import { Loader } from "../../common/common";
 import Members from "../../members/members";
 import UpdateBoard from "../../../hooks/boards/updateBoards";
 const ListPageHeaderWrapper = styled.div`
-  width: 95%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
-const BoardPageTitle = styled(WorkspaceContentsTitle)``;
+const BoardPageTitle = styled(WorkspaceContentsTitle)`
+  padding: 0.25rem;
+`;
 const SubHeaderWrapper = styled.div`
   width: 25%;
-  /* border: 1px solid black; */
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 5%;
 `;
 const ListOption = styled(WorkspaceOption)``;
 const ListOptionIcon = styled(WorkspaceOptionIcon)``;
 
+const BoardPageTitleEdit = styled.input`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--dark-blue);
+  font-family: "Roboto";
+  padding: 0.25rem;
+  &:focus {
+    border: 1px solid var(--text-blue);
+    outline: none;
+    border-radius: 0.25rem;
+  }
+`;
 
-
-
-const EditableText = (props) =>{
-  const data = props.props
-  // console.log(props.buid)
-  const [text, setText] = useState("");
+const EditableText = () => {
+  const { buid } = useParams();
+  const [text, setText] = useState(getCookies({ name: "bname" }));
   const [isEditing, setIsEditing] = useState(false);
-  // setText(props)
-  useEffect(()=>{
-
-    setText(data)
-  },[])
+  const { showNotification, setShowNotification } = useContext(
+    NotificationPopUpContext
+  );
   return (
     <>
       {isEditing ? (
-        <input
-          onChange={(e) =>{
-            ( e.target.value !=='') ? setText(e.target.value) : setText(data)
+        <BoardPageTitleEdit
+          onChange={(e) => {
+            e.target.value !== "" ? setText(e.target.value) : setText(text);
+          }}
+          onBlur={async () => {
+            setIsEditing(false);
+          }}
+          onKeyDown={async (e) => {
+            if (e.key === "Enter") {
+              setIsEditing(false);
+              var response = await UpdateBoard(
+                buid,
+                getCookies({ name: "uuid" }),
+                text
+              );
+              setShowNotification(response);
+              deleteCookie({ name: "bname" });
+              createCookie({
+                name: "bname",
+                value: text,
+                validDays: 30,
+              });
             }
-          } 
-          onBlur={() => setIsEditing(false)}
+          }}
           autoFocus
         />
       ) : (
-        <div onDoubleClick={() => {
-          setIsEditing(true);
-          // var response = await UpdateBoard(buid)
-        } 
-      }
-      >{text}</div>
+        <BoardPageTitle
+          onDoubleClick={() => {
+            setIsEditing(true);
+          }}
+        >
+          {text}
+        </BoardPageTitle>
       )}
     </>
   );
-}
+};
 
-
-
-const ListPageHeader = ({ data }) => {
+const ListPageHeader = () => {
   const { buid } = useParams();
   const { update, setUpdate } = useContext(UpdateContext);
   const { showNotification, setShowNotification } = useContext(
@@ -88,14 +118,14 @@ const ListPageHeader = ({ data }) => {
       <Members show={show} setShow={setShow} />
       <ListPageHeaderWrapper>
         {/* <BoardPageTitle>{data}</BoardPageTitle> */}
-        <EditableText props={data} buid={buid}/>
+        <EditableText />
         <SubHeaderWrapper>
           <ListOption onClick={() => setShow(true)}>
             <ListOptionIcon src={MemberIcon} /> Members
           </ListOption>
-          <ListOption>
+          {/* <ListOption>
             <ListOptionIcon src={UpdateIcon} /> Update
-          </ListOption>
+          </ListOption> */}
           <ListOption
             disabled={isDisabled}
             onClick={async () => {

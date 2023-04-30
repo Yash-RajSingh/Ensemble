@@ -1,10 +1,11 @@
-const UpdateBoard = async (buid, title, description) => {
+const UpdateBoard = async (buid, uid, title, description) => {
   const Data = {
     buid,
+    uid,
     title,
     description,
   };
-  const BaseUrl = process.env.REACT_APP_UPDATE_BOARDS_URL;
+  const BaseUrl = import.meta.env.VITE_APP_UPDATE_BOARDS_URL;
   try {
     const request = await fetch(BaseUrl, {
       method: "POST",

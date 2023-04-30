@@ -62,24 +62,14 @@ const TaskAdder = ({ buid, luid }) => {
                 type={"date"}
                 size={"min-content"}
                 ref={DateInputRef}
-                onChange={() =>
-                  console.log(
-                    DateInputRef.current.value,
-                    TaskInputRef.current.value,
-                    buid,
-                    luid
-                  )
-                }
               />
               <TaskAdderButton
                 size={"max-content"}
                 top={"5%"}
                 disabled={isDisabled}
                 onClick={async () => {
-                  console.log("clicked");
                   setIsDisabled(true);
                   setIsloading(true);
-                  console.log(DateInputRef.current.value);
                   var response = await AddTask(
                     TaskInputRef.current.value,
                     getCookies({ name: "uuid" }),

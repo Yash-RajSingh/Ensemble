@@ -17,7 +17,7 @@ const ListContainer = styled.div`
   width: 80%;
   margin-top: 2%;
   padding: 0 2%;
-  margin-bottom: 5%;
+  /* margin-bottom: 5%; */
 `;
 
 const ListsWrapper = styled.div`

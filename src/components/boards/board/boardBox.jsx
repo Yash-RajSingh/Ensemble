@@ -7,7 +7,6 @@ import { BoardBoxBody, BoardDescription, BoardTitle } from "./boardBoxElements";
 
 const BoardBox = ({ data, wuid }) => {
   const navigate = useNavigate();
-  console.log(data);
   return (
     <>
       <BoardBoxBody

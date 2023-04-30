@@ -6,7 +6,6 @@ const AddTask = async (title, user_id, board_id, due_date_time, list_id) => {
     due_date_time,
     list_id,
   };
-  console.log("Data", Data);
   const BaseUrl = import.meta.env.VITE_APP_ADD_TASK_URL;
   try {
     const request = await fetch(BaseUrl, {

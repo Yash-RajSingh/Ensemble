@@ -1,10 +1,11 @@
-const UpdateList = async (luid, name, color_code) => {
+const UpdateList = async (title, user_id, board_id, list_id) => {
   const Data = {
-    luid,
-    name,
-    color_code,
+    title,
+    user_id,
+    board_id,
+    list_id,
   };
-  const BaseUrl = process.env.REACT_APP_UPDATE_LISTS_URL;
+  const BaseUrl = import.meta.env.VITE_APP_UPDATE_LISTS_URL;
   try {
     const request = await fetch(BaseUrl, {
       method: "POST",

@@ -66,17 +66,17 @@ const Header = () => {
   let param = window.location.href;
   const [showProfile, setShowProfile] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
+  const [showCreateBtn, setShowCreateBtn] = useState(true);
   const [showWorkspaceBody, setshowWorkspaceBody] = useState(false);
   const { showWorkspaceAdder, setShowWorkspaceAdder } =
     useContext(ShowWSAdderContext);
   const { auth, setAuth } = useContext(AuthContext);
   let navigate = useNavigate();
   useEffect(() => {
-    if (param.includes("login")) {
-      setShowHeader(false);
-    } else {
-      setShowHeader(true);
-    }
+    param.includes("login") ? setShowHeader(false) : setShowHeader(true);
+    param.includes("workspace")
+      ? setShowCreateBtn(true)
+      : setShowCreateBtn(false);
     setshowWorkspaceBody(false);
     setShowWorkspaceAdder(false);
   }, [param]);
@@ -102,9 +102,11 @@ const Header = () => {
                   <WorkSpaceList />
                 </WorkspaceOptionContainer>
 
-                <CreateBtn onClick={() => setShowWorkspaceAdder(true)}>
-                  <LoginText>Create</LoginText>
-                </CreateBtn>
+                {showCreateBtn && (
+                  <CreateBtn onClick={() => setShowWorkspaceAdder(true)}>
+                    <LoginText>Create</LoginText>
+                  </CreateBtn>
+                )}
                 <UserProfileIcon
                   src={ProfileIcon}
                   onClick={() => setShowProfile(!showProfile)}
