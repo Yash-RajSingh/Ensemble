@@ -40,7 +40,6 @@ const GlobalStyles = createGlobalStyle`
     outline: none;
     border: none;
     margin-top: 20px;
-     border: 1px solid green!important;
   }
 `;
 
