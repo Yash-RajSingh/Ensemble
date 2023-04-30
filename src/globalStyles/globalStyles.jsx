@@ -24,7 +24,6 @@ const GlobalStyles = createGlobalStyle`
   body{
     overflow-y: hidden;
     overflow-x: hidden;
-
     background: var(--bg-white);
     padding: 0;
   }
