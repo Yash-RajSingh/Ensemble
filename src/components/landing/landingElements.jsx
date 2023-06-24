@@ -21,7 +21,6 @@ export const IntroSubWrapper = styled.div`
   width: ${(props) => (props.width ? props.width : "50%")};
   @media (max-width: 720px) {
     width: 100%;
-    
   }
 `;
 export const IntroImage = styled.img`
@@ -30,7 +29,7 @@ export const IntroImage = styled.img`
   @media (max-width: 720px) {
     /* border: 1px solid green; */
     margin-top: 10%;
-    width: 100%
+    width: 100%;
   }
 `;
 
@@ -54,7 +53,7 @@ export const LandingText = styled.p`
       width: 90%;
       /* border: 2px solid yellow; */
     }
-    &.powerhouse{
+    &.powerhouse {
       margin-top: 2%;
       font-size: 2rem;
     }

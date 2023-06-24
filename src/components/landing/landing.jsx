@@ -23,10 +23,21 @@ const Landing = () => {
         <LandingContainer>
           <IntroContainer>
             <IntroSubWrapper width="45%" className={"parent"}>
-              <LandingText size="2.75rem" top="15%" color weight="900" className={"motto"}>
+              <LandingText
+                size="2.75rem"
+                top="15%"
+                color
+                weight="900"
+                className={"motto"}
+              >
                 Ensemble brings all your tasks, teammates, and tools together
               </LandingText>
-              <LandingText size="1.5rem" top="7%" width="85%" className={"submotto"}>
+              <LandingText
+                size="1.5rem"
+                top="7%"
+                width="85%"
+                className={"submotto"}
+              >
                 Keep everything in the same place—even if your team isn't.
               </LandingText>
               <LoginButton
@@ -46,7 +57,12 @@ const Landing = () => {
           <LandingText size="2.25rem" top="0.5%" color className={"powerhouse"}>
             A productivity powerhouse
           </LandingText>
-          <LandingText size="1.25rem" top="2%" width="60%" className={"definition"}>
+          <LandingText
+            size="1.25rem"
+            top="2%"
+            width="60%"
+            className={"definition"}
+          >
             Simple, flexible, and powerful. All it takes are boards, lists, and
             tasks to get a clear view of who's doing what and what needs to get
             done.
@@ -72,7 +88,7 @@ const Landing = () => {
                 to show their status.
               </InfoCard>
             </IntroSubWrapper>
-            <IntroSubWrapper width="60%" >
+            <IntroSubWrapper width="60%">
               <IntroImage
                 src={BoardImage}
                 style={{ border: "1px solid  rgb(9, 30, 30, 0.1)" }}

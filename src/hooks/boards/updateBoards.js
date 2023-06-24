@@ -21,4 +21,4 @@ const UpdateBoard = async (buid, uid, title, description) => {
   }
 };
 
-export default UpdateBoard; 
+export default UpdateBoard;

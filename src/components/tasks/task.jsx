@@ -54,10 +54,6 @@ const Task = ({ data, buid, luid }) => {
     NotificationPopUpContext
   );
   const { update, setUpdate } = useContext(UpdateContext);
-  // const UserId = getCookies({ name: "uuid" })
-  // console.log(data)
-  // const date = new Date()
-  // console.log(date)
   return (
     <>
       <TaskBody>

@@ -61,13 +61,61 @@ const Rotate = keyframes`
 
 export const Loader = styled.span`
   margin: 0 auto;
-  width: ${(props) => (props.size ? props.size : "1.5rem")};
-  height: ${(props) => (props.size ? props.size : "1.5rem")};
+  min-width: ${(props) => (props.size ? props.size : "1.5rem")};
+  min-height: ${(props) => (props.size ? props.size : "1.5rem")};
+  max-width: ${(props) => (props.size ? props.size : "1.5rem")};
+  max-height: ${(props) => (props.size ? props.size : "1.5rem")};
   border-radius: 50%;
   display: block;
   position: relative;
   border: 5px solid;
-  border-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.7);
+  /* border-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.7); */
+  border-color: ${(props) =>
+    props.dark
+      ? "rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.7)"
+      : "rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.7)"};
   box-sizing: border-box;
   animation: ${Rotate} 1s linear infinite;
+`;
+
+export const SlideIn = keyframes`
+from {
+    transform: translateX(100%); /* Initial position */
+    opacity: 0; /* Optional: Add opacity animation */
+  }
+  to {
+    transform: translateX(0); /* Final position */
+    opacity: 1; /* Optional: Add opacity animation */
+  }
+`;
+export const SlideOut = keyframes`
+from {
+    transform: translateX(0); /* Initial position */
+    opacity: 1; /* Optional: Add opacity animation */
+  }
+  to {
+    transform: translateX(100%); /* Final position */
+    opacity: 0; /* Optional: Add opacity animation */
+  }
+`;
+
+export const FadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+export const SlideDown = keyframes`
+  from {
+    transform: translateY(-7%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+
+  }
 `;

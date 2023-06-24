@@ -19,6 +19,7 @@ const BoardBox = ({ data, wuid }) => {
             validDays: 30,
           });
           createCookie({ name: "wuid", value: wuid, validDays: 7 });
+          localStorage.setItem("tempId", data.board_id);
           navigate(`/list/${data?.board_id}`);
         }}
       >

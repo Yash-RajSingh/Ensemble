@@ -6,8 +6,8 @@ or
 
 ### `yarn dev`
 
-
 # Directory Structure
+
 ```
 ├───assets
 ├───components

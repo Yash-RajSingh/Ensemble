@@ -1,5 +1,5 @@
 import styled from "styled-components";
-// import { InputLabel } from "../common/common";
+import { SlideDown } from "../common/common";
 
 export const MembersContainer = styled.div`
   display: ${(props) => (props.show ? "flex" : "none")};
@@ -14,10 +14,13 @@ export const MembersContainer = styled.div`
   align-items: center;
 `;
 export const MembersWrapper = styled.div`
+  animation: ${SlideDown} 0.25s ease-in;
   background: var(--white);
   width: 35rem;
   height: max-content;
   padding: 1.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid rgba(0, 0, 0, 02.);
 `;
 
 export const MemberAdderWrapper = styled.div`

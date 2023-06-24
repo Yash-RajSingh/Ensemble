@@ -43,7 +43,7 @@ const InputModal = ({ type, boardType }) => {
   return (
     <>
       {showInputModal && (
-        <InputModalBody>
+        <InputModalBody anime={showInputModal}>
           <InputModalHeaderWrapper>
             <InputModalCloseButton onClick={() => setShowInputModal(false)}>
               +

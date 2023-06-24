@@ -12,7 +12,6 @@ const GetBoardWorkspace = async (uid, buid) => {
       body: JSON.stringify(data),
     });
     const response = await request.json();
-    console.log(response);
     return response;
   } catch (err) {
     console.log(err);

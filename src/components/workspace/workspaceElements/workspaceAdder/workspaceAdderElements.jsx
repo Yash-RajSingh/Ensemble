@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import BgImage from "../../../../assets/boardsAdderBg.png";
-
+import { FadeIn } from "../../../common/common";
 export const WorkspaceAdderContainer = styled.div`
   background: rgba(0, 0, 0, 0.6);
   position: absolute;
@@ -11,6 +11,7 @@ export const WorkspaceAdderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: ${FadeIn} 0.25s ease-in-out;
 `;
 
 export const WorkspaceAdderWrapper = styled.div`
