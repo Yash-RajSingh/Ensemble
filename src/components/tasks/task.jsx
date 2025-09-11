@@ -53,6 +53,7 @@ const Task = ({ data, buid, luid }) => {
   const { showNotification, setShowNotification } = useContext(
     NotificationPopUpContext
   );
+  const normalizedStatus = (data?.task_status || "").toLowerCase();
   const { update, setUpdate } = useContext(UpdateContext);
   return (
     <>
@@ -91,23 +92,21 @@ const Task = ({ data, buid, luid }) => {
             }}
           >
             <StatusOption
-              selected={
-                data?.task_status.includes("Not started") ? true : false
-              }
+              selected={normalizedStatus === "not started"}
               value="Not started"
             >
               Not started
             </StatusOption>
+
             <StatusOption
-              selected={
-                data?.task_status.includes("In Progress") ? true : false
-              }
+              selected={normalizedStatus === "in progress"}
               value="In progress"
             >
               In progress
             </StatusOption>
+
             <StatusOption
-              selected={data?.task_status.includes("Completed") ? true : false}
+              selected={normalizedStatus === "completed"}
               value="Completed"
             >
               Completed
